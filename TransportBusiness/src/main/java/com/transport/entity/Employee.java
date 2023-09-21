@@ -16,6 +16,6 @@ public class Employee {
     private String role;
     private int age;
     private Long salary;
-    private List<String> companyId;
+    private List<String> vendorId;
 
 }

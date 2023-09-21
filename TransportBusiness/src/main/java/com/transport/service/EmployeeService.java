@@ -25,7 +25,7 @@ public class EmployeeService {
     public List<Employee> getEmployeeByName(String name) {
         //log.info("Getting Employee {} from the repository.", name);
 
-        List<Employee> employeeList = employeeRepository.findByName(name);
+        List<Employee> employeeList = employeeRepository.findByFirstName(name);
 
         if (CollectionUtils.isEmpty(employeeList)) {
             //log.info("No Employee found by name {}", name);

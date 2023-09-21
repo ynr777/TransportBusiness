@@ -1,0 +1,14 @@
+#server.port=8081
+
+
+#spring.data.mongodb.host=${MONGODBHOSTNAME}
+#spring.data.mongodb.port=${MONGODBPORT}
+#spring.data.mongodb.database=${MONGODBNAME}
+
+spring:
+  data:
+    mongodb:
+       uri: mongodb+srv://Transport_spring_app:Theking123$@cluster0.xcwqfdz.mongodb.net/TransportDB
+       database: TransportDB
+       
+       

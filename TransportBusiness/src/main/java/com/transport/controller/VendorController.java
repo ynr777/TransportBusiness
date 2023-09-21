@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-public class EmployeeController {
+public class VendorController {
 
     @Autowired
     EmployeeService employeeService;
