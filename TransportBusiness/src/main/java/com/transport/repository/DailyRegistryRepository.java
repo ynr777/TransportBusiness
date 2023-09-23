@@ -3,13 +3,18 @@ package com.transport.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.transport.entity.Employee;
-
+import com.transport.entity.DailyRegistry;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
-public interface DailyRegistryRepository extends MongoRepository<Employee, String> {
+public interface DailyRegistryRepository extends MongoRepository<DailyRegistry, String> {
 
-    List<Employee> findByFirstName(String firstName);
-    List<Employee> findByRole(String role);
+    List<DailyRegistry> findByInvoiceDate(LocalDateTime date);
+    List<DailyRegistry> findByEmployee(String Employee);
+    List<DailyRegistry> findDailyRegistryByInvoiceDateBetween(LocalDateTime from, LocalDateTime to);
+    List<DailyRegistry> findTopByOrderByRegistryIdDesc();
+    
+    //@Query("{'invoiceDate':{$gte:'?0', $lte:'?1'}}")
 
 }

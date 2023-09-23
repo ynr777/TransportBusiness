@@ -17,7 +17,7 @@ public class VendorController {
     @Autowired
     EmployeeService employeeService;
 
-    @GetMapping("/employee/{name}")
+    @GetMapping("/vendor/{name}")
     public List<Employee> getEmployeeByName(@PathVariable String name) {
     	
         log.info("Getting employee by name {} ", name);
@@ -29,7 +29,7 @@ public class VendorController {
 
 
 
-    @PostMapping("/employee")
+    @PostMapping("/vendor")
     public Employee addEmployee(@RequestBody Employee employee) {
         log.info("Adding user {} to the Database", employee.getFirstName());
         return employeeService.addEmployee(employee);

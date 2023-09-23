@@ -8,7 +8,7 @@
 spring:
   data:
     mongodb:
-       uri: mongodb+srv://Transport_spring_app:Theking123$@cluster0.xcwqfdz.mongodb.net/TransportDB
+       uri: 
        database: TransportDB
        
        

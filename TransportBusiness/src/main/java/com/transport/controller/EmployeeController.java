@@ -1,6 +1,5 @@
 package com.transport.controller;
 
-
 import com.transport.entity.Employee;
 import com.transport.service.EmployeeService;
 
@@ -14,30 +13,36 @@ import java.util.List;
 @Slf4j
 public class EmployeeController {
 
-    @Autowired
-    EmployeeService employeeService;
+	@Autowired
+	EmployeeService employeeService;
 
-    @GetMapping("/employee/{name}")
-    public List<Employee> getEmployeeByName(@PathVariable String name) {
-    	
-        log.info("Getting employee by name {} ", name);
-        List employeeList = employeeService.getEmployeeByName(name);
-        log.info("Received {} employees by name {}", employeeList.size(), name);
-        return employeeList;
-    }
+	@GetMapping("/employee/{name}")
+	public List<Employee> getEmployeeByName(@PathVariable String name) {
 
+		log.info("Getting employee by name {} ", name);
+		List employeeList = employeeService.getEmployeeByName(name);
+		log.info("Received {} employees by name {}", employeeList.size(), name);
+		return employeeList;
+	}
 
+	@GetMapping("/employee")
+	public List<Employee> getEmployees() {
 
+		log.info("Getting employees ");
+		List employeeList = employeeService.getEmployees();
+		log.info("Received {} employees ", employeeList.size());
+		return employeeList;
+	}
 
-    @PostMapping("/employee")
-    public Employee addEmployee(@RequestBody Employee employee) {
-        log.info("Adding user {} to the Database", employee.getFirstName());
-        return employeeService.addEmployee(employee);
-    }
-    
-    @PutMapping("/employee")
-    public Employee editEmployee(@RequestBody Employee employee) {
-        log.info("Adding user {} to the Database", employee.getFirstName());
-        return employeeService.addEmployee(employee);
-    }
+	@PostMapping("/employee")
+	public Employee addEmployee(@RequestBody Employee employee) {
+		log.info("Adding user {} to the Database", employee.getFirstName());
+		return employeeService.addEmployee(employee);
+	}
+
+	@PutMapping("/employee/{id}")
+	public Employee editEmployee(@PathVariable String id, @RequestBody Employee employee) {
+		log.info("Adding user {} to the Database", employee.getFirstName());
+		return employeeService.editEmployee(id, employee);
+	}
 }
