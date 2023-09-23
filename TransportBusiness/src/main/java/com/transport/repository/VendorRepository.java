@@ -11,7 +11,6 @@ import java.util.List;
 
 public interface VendorRepository extends MongoRepository<Vendor, String> {
 
-    //List<Vendor> findByDate(Date date);
-    //List<Vendor> findByRole(String role);
+   
 
 }

@@ -64,7 +64,7 @@ public class DailyRegistryController {
 
 	@PostMapping("/dailyRegistry")
 	public DailyRegistry addDailyRegistry(@RequestBody DailyRegistry dailyRegistry) {
-		log.info("Adding dailyRegistry date {}, Company {}, employee to the Database", dailyRegistry.getIsoDate(),
+		log.info("Adding dailyRegistry date {}, Company {}, to the Database", dailyRegistry.getIsoDate(),
 				dailyRegistry.getCompanyName(), dailyRegistry.getEmployee());
 		return dailyRegistryService.addDailyRegistry(dailyRegistry);
 	}

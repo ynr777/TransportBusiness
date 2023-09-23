@@ -21,28 +21,28 @@ public class EmployeeService {
 	EmployeeRepository employeeRepository;
 
 	public List<Employee> getEmployeeByName(String name) {
-		// log.info("Getting Employee {} from the repository.", name);
+		log.info("Getting Employee {} from the repository.", name);
 
 		List<Employee> employeeList = employeeRepository.findByFirstName(name);
 
 		if (CollectionUtils.isEmpty(employeeList)) {
-			// log.info("No Employee found by name {}", name);
+			log.info("No Employee found by name {}", name);
 			return new ArrayList<Employee>();
 		}
-		// log.info("found {} Employee by name {}", employeeList.size(), name);
+		log.info("found {} Employee by name {}", employeeList.size(), name);
 		return employeeList;
 	}
-	
+
 	public List<Employee> getEmployees() {
-		// log.info("Getting Employee {} from the repository.", name);
+		log.info("Getting Employees from the repository.");
 
 		List<Employee> employeeList = employeeRepository.findAll();
 
 		if (CollectionUtils.isEmpty(employeeList)) {
-			// log.info("No Employee found by name {}", name);
+			log.info("No Employees found ");
 			return new ArrayList<Employee>();
 		}
-		// log.info("found {} Employee by name {}", employeeList.size(), name);
+		log.info("found {} Employee", employeeList.size());
 		return employeeList;
 	}
 
@@ -51,15 +51,15 @@ public class EmployeeService {
 		Employee editEmployee = employeeData.get();
 		editEmployee.setActiveFlag(false);
 		employeeRepository.save(editEmployee);
-		
+
 		return employeeRepository.insert(employee);
 
 	}
 
 	public Employee addEmployee(Employee employee) {
-		// log.info("Adding Employee {} to database", employee.getName());
+		log.info("Adding Employee {} to database", employee.getFirstName());
 		Employee employee2 = employeeRepository.insert(employee);
-		// log.info("Added Employee {} successfully", customer2.getName());
+		log.info("Added Employee {} successfully", employee2.getFirstName());
 		return employee2;
 	}
 }
