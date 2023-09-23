@@ -56,6 +56,40 @@ public class DailyRegistryService {
 		return dailyRegistryList;
 	}
 
+	public List<DailyRegistry> getActiveDailyRegistryByDate(String stringDate) {
+		log.info("Getting DailyRegistry {} from the repository.", stringDate);
+		String[] resultDate = stringDate.split("-");
+
+		List<DailyRegistry> dailyRegistryList = dailyRegistryRepository
+				.findByInvoiceDateAndActiveFlag(convertStringDate(stringDate),true);
+
+		if (CollectionUtils.isEmpty(dailyRegistryList)) {
+			log.info("No DailyRegistry found by date {}", stringDate);
+			return new ArrayList<DailyRegistry>();
+		}
+
+		log.info("found {} DailyRegistry by date {}", dailyRegistryList.size(), stringDate);
+
+		return dailyRegistryList;
+	}
+
+	public List<DailyRegistry> getActiveDailyRegistryBetweenDates(String startDate, String endDate) {
+		log.info("Getting DailyRegistry {} from the repository.", startDate);
+
+		List<DailyRegistry> dailyRegistryList = dailyRegistryRepository
+				.findDailyRegistryByActiveFlagAndInvoiceDateBetween(true,convertStringDate(startDate),
+						convertStringDate(endDate));
+
+		if (CollectionUtils.isEmpty(dailyRegistryList)) {
+			log.info("No DailyRegistry found by date {}", startDate);
+			return new ArrayList<DailyRegistry>();
+		}
+
+		log.info("found {} DailyRegistry by date {}", dailyRegistryList.size(), startDate);
+
+		return dailyRegistryList;
+	}
+
 	public DailyRegistry addDailyRegistry(DailyRegistry dailyRegistry) {
 		// log.info("Adding DailyRegistry {} to database", DailyRegistry.getName());
 

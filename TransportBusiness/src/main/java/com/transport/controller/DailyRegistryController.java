@@ -27,7 +27,7 @@ public class DailyRegistryController {
 
 		log.info("Getting dailyRegistry by date {} ", date);
 		List dailyRegistryList = dailyRegistryService.getDailyRegistryByDate(date);
-		log.info("Received {} employees by name {}", dailyRegistryList.size(), date);
+		log.info("Received {} dailyRegistry by date {}", dailyRegistryList.size(), date);
 		return dailyRegistryList;
 	}
 
@@ -35,21 +35,44 @@ public class DailyRegistryController {
 	public List<DailyRegistry> getdailyRegistryBetweenDates(@PathVariable String startDate,
 			@PathVariable String endDate) {
 
-		log.info("Getting dailyRegistry by date {} ", startDate);
+		log.info("Getting dailyRegistry by start date {} and end date {}", startDate, endDate);
 		List dailyRegistryList = dailyRegistryService.getDailyRegistryBetweenDates(startDate, endDate);
-		log.info("Received {} employees by name {}", dailyRegistryList.size(), startDate);
+		log.info("Received {} dailyRegistry by start date {} and end date {}", dailyRegistryList.size(), startDate,
+				endDate);
+		return dailyRegistryList;
+	}
+	
+	@GetMapping("/activeDailyRegistry/{date}")
+	public List<DailyRegistry> getActiveDailyRegistryByDate(@PathVariable String date) {
+
+		log.info("Getting Active dailyRegistry by date {} ", date);
+		List dailyRegistryList = dailyRegistryService.getActiveDailyRegistryByDate(date);
+		log.info("Received Active {} dailyRegistry by date {}", dailyRegistryList.size(), date);
+		return dailyRegistryList;
+	}
+
+	@GetMapping("/activeDailyRegistry/{startDate}/{endDate}")
+	public List<DailyRegistry> getActiveDailyRegistryBetweenDates(@PathVariable String startDate,
+			@PathVariable String endDate) {
+
+		log.info("Getting Active dailyRegistry by start date {} and end date {}", startDate, endDate);
+		List dailyRegistryList = dailyRegistryService.getActiveDailyRegistryBetweenDates(startDate, endDate);
+		log.info("Received Active {} dailyRegistry by start date {} and end date {}", dailyRegistryList.size(), startDate,
+				endDate);
 		return dailyRegistryList;
 	}
 
 	@PostMapping("/dailyRegistry")
 	public DailyRegistry addDailyRegistry(@RequestBody DailyRegistry dailyRegistry) {
-		// log.info("Adding user {} to the Database", employee.getFirstName());
+		log.info("Adding dailyRegistry date {}, Company {}, employee to the Database", dailyRegistry.getIsoDate(),
+				dailyRegistry.getCompanyName(), dailyRegistry.getEmployee());
 		return dailyRegistryService.addDailyRegistry(dailyRegistry);
 	}
 
 	@PutMapping("/dailyRegistry/{id}")
 	public DailyRegistry editDailyRegistry(@PathVariable String id, @RequestBody DailyRegistry dailyRegistry) {
-		// log.info("Adding user {} to the Database", employee.getFirstName());
+		log.info("Editing  dailyRegistry with registry id {} by user {} to the Database", dailyRegistry.getRegistryId(),
+				dailyRegistry.getUpdatedUser());
 		return dailyRegistryService.editDailyRegistry(id, dailyRegistry);
 	}
 }
