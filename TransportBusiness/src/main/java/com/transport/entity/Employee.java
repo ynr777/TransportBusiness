@@ -19,6 +19,8 @@ public class Employee {
     private String role;
     private int age;
     private Long salary;
+    private String userId;
+    private String password;
     private List<String> vendors;
     @CreatedDate
     private LocalDateTime createdDate;

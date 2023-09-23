@@ -62,4 +62,11 @@ public class EmployeeService {
 		log.info("Added Employee {} successfully", employee2.getFirstName());
 		return employee2;
 	}
+	
+	public Employee findByLogin(String userId, String password) {
+		log.info("Finding employee with userId {}", userId);
+		Employee employee2 = employeeRepository.findByUserIdAndPassword(userId, password);
+		log.info("found employee with userId {}", userId);
+		return employee2;
+	}
 }

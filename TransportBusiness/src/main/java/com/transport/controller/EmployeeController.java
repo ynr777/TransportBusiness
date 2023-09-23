@@ -34,6 +34,15 @@ public class EmployeeController {
 		return employeeList;
 	}
 
+	@GetMapping("/employee/{userId}/{password}")
+	public Employee getEmployeeBylogin(@PathVariable String userId, @PathVariable String password) {
+
+		log.info("Getting employee ");
+		Employee employee = employeeService.findByLogin(userId, password);
+		log.info("Received employee");
+		return employee;
+	}
+
 	@PostMapping("/employee")
 	public Employee addEmployee(@RequestBody Employee employee) {
 		log.info("Adding user {} to the Database", employee.getFirstName());
